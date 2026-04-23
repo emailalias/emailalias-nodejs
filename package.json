@@ -1,0 +1,37 @@
+{
+  "name": "emailalias",
+  "version": "0.1.0",
+  "description": "Official Node.js client for the EmailAlias API.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "email",
+    "alias",
+    "emailalias",
+    "api",
+    "client"
+  ],
+  "author": "EmailAlias",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emailalias/emailalias-nodejs.git"
+  },
+  "homepage": "https://emailalias.io",
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}
