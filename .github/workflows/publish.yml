@@ -19,8 +19,13 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           registry-url: 'https://registry.npmjs.org'
+
+      # Trusted-Publisher OIDC auth requires npm >= 11.5.1 (bundled with Node 22).
+      # Upgrade anyway to be safe across minor Node releases.
+      - name: Upgrade npm
+        run: npm install -g npm@latest
 
       - name: Install dependencies
         run: npm install --no-audit --no-fund
@@ -30,7 +35,3 @@ jobs:
 
       - name: Publish to npm via Trusted Publisher
         run: npm publish --provenance --access public
-        env:
-          # Override the XXXXX-XXXXX placeholder setup-node writes so
-          # npm falls through to the OIDC/Trusted-Publisher flow.
-          NODE_AUTH_TOKEN: ""
