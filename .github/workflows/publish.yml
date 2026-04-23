@@ -20,6 +20,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: npm install --no-audit --no-fund
@@ -29,4 +30,7 @@ jobs:
 
       - name: Publish to npm via Trusted Publisher
         run: npm publish --provenance --access public
-        # No NODE_AUTH_TOKEN — OIDC handles auth.
+        env:
+          # Override the XXXXX-XXXXX placeholder setup-node writes so
+          # npm falls through to the OIDC/Trusted-Publisher flow.
+          NODE_AUTH_TOKEN: ""
