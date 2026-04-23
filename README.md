@@ -86,7 +86,7 @@ try {
 ```ts
 const client = new Client({
   apiKey: "ea_live_xxx",
-  baseUrl: "https://api.emailalias.io", // override for staging / self-host
+  baseUrl: "https://emailalias.io", // override for staging / self-host
   timeoutMs: 30_000,
   fetchImpl: fetch, // inject a custom fetch (e.g. `undici`)
 });

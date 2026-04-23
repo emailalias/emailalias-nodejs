@@ -19,7 +19,7 @@ import type {
   UpdateAliasOptions,
 } from "./types";
 
-const DEFAULT_BASE_URL = "https://api.emailalias.io";
+const DEFAULT_BASE_URL = "https://emailalias.io";
 
 export class Client {
   private apiKey: string;
