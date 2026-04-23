@@ -19,13 +19,11 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          # Node 24 ships with npm 11, which is required for the Trusted
+          # Publisher OIDC exchange flow. Node 22 ships with npm 10 which
+          # doesn't know how to auto-auth with npm via OIDC.
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
-
-      # Trusted-Publisher OIDC auth requires npm >= 11.5.1 (bundled with Node 22).
-      # Upgrade anyway to be safe across minor Node releases.
-      - name: Upgrade npm
-        run: npm install -g npm@latest
 
       - name: Install dependencies
         run: npm install --no-audit --no-fund
