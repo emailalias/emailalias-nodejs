@@ -1,6 +1,6 @@
 # emailalias-nodejs
 
-Official Node.js client for the [EmailAlias](https://emailalias.io) REST API. TypeScript types included.
+Official Node.js client for the [EmailAlias.io](https://emailalias.io) REST API. TypeScript types included.
 
 API access is a **Premium** feature. Generate a key from **Settings → API Keys** in the web dashboard.
 
@@ -94,7 +94,7 @@ const client = new Client({
 
 ## ⚠️ Browser usage
 
-**Never put a live API key in frontend code.** Any user can open devtools and read it. If you're building a browser/React app, call EmailAlias from your backend and proxy requests from the client, or use [`emailalias-react`](https://github.com/emailalias/emailalias-react) from a Next.js Route Handler / server action.
+**Never put a live API key in frontend code.** Any user can open devtools and read it. If you're building a browser/React app, call EmailAlias.io from your backend and proxy requests from the client, or use [`emailalias-react`](https://github.com/emailalias/emailalias-react) from a Next.js Route Handler / server action.
 
 ## Available methods
 
