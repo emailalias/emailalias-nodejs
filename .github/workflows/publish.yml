@@ -10,10 +10,6 @@ jobs:
   publish:
     name: Build & publish
     runs-on: ubuntu-latest
-    # Must match the environment you registered on npm's Trusted Publisher.
-    environment:
-      name: npm
-      url: https://www.npmjs.com/package/emailalias
     # Required for OIDC (Trusted Publisher) + npm provenance attestation.
     permissions:
       contents: read
