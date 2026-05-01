@@ -103,6 +103,7 @@ const client = new Client({
 | `listAliases()` | `GET /api/aliases` |
 | `createAlias(opts)` | `POST /api/aliases` |
 | `updateAlias(id, opts)` | `PATCH /api/aliases/{id}` |
+| `updateAliasDisplayName(id, displayName)` | `PATCH /api/aliases/{id}/display-name` |
 | `deleteAlias(id)` | `DELETE /api/aliases/{id}` |
 | `listAvailableDomains()` | `GET /api/aliases/domains` |
 | `listDestinations()` | `GET /api/destinations` |
