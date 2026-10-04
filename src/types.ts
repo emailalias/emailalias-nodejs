@@ -41,9 +41,22 @@ export interface Domain {
   spf_verified: boolean;
   dkim_verified: boolean;
   dmarc_verified: boolean;
+  mail_from_verified: boolean;
+  /** Whether catch-all is enabled: any address at this domain auto-creates an
+   * alias on first inbound email. Premium + verified domains only. */
+  catch_all: boolean;
+  /** The inbox catch-all aliases forward to (null when catch-all is off). */
+  catch_all_destination: string | null;
   alias_count: number;
+  /** Of alias_count, how many were auto-created by catch-all. */
+  auto_created_alias_count: number;
   created_at: string;
   required_dns_records: DnsRecord[];
+}
+
+export interface CatchAllDisableResult {
+  /** Number of active, auto-created aliases that were disabled. */
+  disabled: number;
 }
 
 export interface DnsRecord {

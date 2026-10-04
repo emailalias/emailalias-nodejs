@@ -115,6 +115,8 @@ const client = new Client({
 | `addDomain(name)` | `POST /api/domains` |
 | `verifyDomain(id)` | `POST /api/domains/{id}/verify` |
 | `deleteDomain(id)` | `DELETE /api/domains/{id}` |
+| `setCatchAll(id, catchAll, destination?)` | `PATCH /api/domains/{id}/catch-all` |
+| `disableCatchAllAliases(id)` | `POST /api/domains/{id}/catch-all/disable-aliases` |
 | `getDashboardStats()` | `GET /api/analytics/dashboard` |
 | `listLogs(page, perPage)` | `GET /api/analytics/logs` |
 | `listExposureEvents(page, perPage)` | `GET /api/analytics/exposure` |

@@ -8,6 +8,7 @@ export {
 export type {
   Alias,
   AvailableDomain,
+  CatchAllDisableResult,
   ClientOptions,
   CreateAliasOptions,
   DashboardStats,

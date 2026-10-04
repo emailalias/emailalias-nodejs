@@ -7,6 +7,7 @@ import {
 import type {
   Alias,
   AvailableDomain,
+  CatchAllDisableResult,
   ClientOptions,
   CreateAliasOptions,
   DashboardStats,
@@ -183,6 +184,40 @@ export class Client {
 
   deleteDomain(domainId: string): Promise<void> {
     return this.request("DELETE", `/api/domains/${domainId}`);
+  }
+
+  /**
+   * Enable or disable catch-all on a verified custom domain (Premium-only).
+   *
+   * When enabling, `destination` must be the user's primary email or a
+   * verified forwarding destination they own — that inbox receives every
+   * alias the catch-all auto-creates. It defaults to the account's primary
+   * email when omitted. Disabling clears the stored destination (existing
+   * auto-created aliases keep forwarding until you disable them).
+   */
+  setCatchAll(
+    domainId: string,
+    catchAll: boolean,
+    destination?: string
+  ): Promise<Domain> {
+    return this.request("PATCH", `/api/domains/${domainId}/catch-all`, {
+      catch_all: catchAll,
+      ...(destination !== undefined ? { destination } : {}),
+    });
+  }
+
+  /**
+   * Bulk-disable every active alias that catch-all auto-created on a domain.
+   *
+   * Sets them inactive (forwarding stops) without deleting them, and leaves
+   * hand-created aliases and the catch-all setting itself untouched.
+   * Idempotent — a second call returns `{ disabled: 0 }`.
+   */
+  disableCatchAllAliases(domainId: string): Promise<CatchAllDisableResult> {
+    return this.request(
+      "POST",
+      `/api/domains/${domainId}/catch-all/disable-aliases`
+    );
   }
 
   // ── Analytics ─────────────────────────────────────────────────────────
